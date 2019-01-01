@@ -3,6 +3,7 @@ import Input from 'components/molecules/Input';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { setPhoneError, setPhone } from 'duck/actions/phone';
+import Info from './components/Info';
 
 const phoneProps = {
   type: 'mask',
@@ -40,7 +41,10 @@ const Phone = ({ phone, bindPhoneError, bindPhone }) => {
     }
   };
   return (
-    <Input {...phoneProps} onBlur={onBlur} onChange={onChange} error={phone.error} onFocus={onFocus} id="phoneInput" />
+    <>
+      <Input {...phoneProps} onBlur={onBlur} onChange={onChange} error={phone.error} onFocus={onFocus} id="phoneInput" />
+      <Info />
+    </>
   );
 };
 

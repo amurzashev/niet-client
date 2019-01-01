@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { setClientError, setClient } from 'duck/actions/client';
 import { setPhoneError } from 'duck/actions/phone';
+import Info from './components/Info';
 
 const clientProps = {
   type: 'mask',
@@ -30,14 +31,18 @@ const Client = ({
       }
     }
   };
-  const onFocus = () => {
+  const onFocus = e => {
     if (!phone.value) {
       bindPhoneError('Заполните телефон');
+      e.target.blur();
       // document.getElementById('phoneInput').focus();
     }
   };
   return (
-    <Input {...clientProps} onChange={onChange} error={client.error} onFocus={onFocus} id="clientInput" />
+    <>
+      <Input {...clientProps} onChange={onChange} error={client.error} onFocus={onFocus} id="clientInput" />
+      <Info />
+    </>
   );
 };
 

@@ -22,4 +22,5 @@ export default styled.p`
   font-family: 'Roboto', sans-serif;
   font-size: ${props => getFontSize(props.size)}px;
   font-weight: ${props => props.bold ? '700' : '400'};
+  color ${props => props.theme.colors[props.color]};
 `;
