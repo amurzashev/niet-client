@@ -1,3 +1,4 @@
+type text
 ```js
 import Input from './';
 
