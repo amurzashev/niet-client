@@ -1,22 +1,14 @@
 import React from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import routes from './components/pages';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Switch>
+        {routes.map(route => <Route {...route} />)}
+      </Switch>
+    </BrowserRouter>
   );
 }
 
