@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import Input from 'components/molecules/Input';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { setPhoneError } from 'duck/actions/phone';
+import { setPhoneError, setPhone } from 'duck/actions/phone';
 
 const phoneProps = {
   type: 'mask',
@@ -47,10 +47,3 @@ const mapDispatchToProps = {
   bindPhoneError: setPhoneError,
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Phone);
-
-/*
-  convert masked num to plain digits => 11 length
-  if (value.length) {
-    console.log(value.match(/[0-9]/g).join(''));
-  };
-*/
