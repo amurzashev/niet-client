@@ -11,7 +11,7 @@ const Wrap = styled.div`
 export default () => (
   <Wrap>
     <Phone />
-    <Driver />
+    {/* <Driver /> */}
     <Car />
   </Wrap>
 );

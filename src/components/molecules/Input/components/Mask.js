@@ -4,12 +4,21 @@ import PropTypes from 'prop-types';
 import Text from './Text';
 
 const Mask = props => {
-  const { mask, placeholder } = props;
+  const {
+    mask,
+    placeholder,
+    value,
+    onChange,
+    autoFocus,
+  } = props;
   const maskProps = {
     mask,
+    value,
+    onChange,
   };
   const textProps = {
     placeholder,
+    autoFocus,
   };
   return (
     <InputMask {...maskProps}>
@@ -21,8 +30,12 @@ const Mask = props => {
 Mask.propTypes = {
   mask: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
+  value: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+  autoFocus: PropTypes.bool,
 };
 Mask.defaultProps = {
   placeholder: '',
+  autoFocus: false,
 };
 export default Mask;
