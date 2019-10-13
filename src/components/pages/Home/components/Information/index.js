@@ -9,6 +9,8 @@ const Wrap = styled.div`
   border-bottom: 1px solid ${props => props.theme.colors.darkGray};
   ${props => props.theme.breakpoints.mobile} {
     width: 100%;
+    border-top: none;
+    border-left: none;
   }
 `;
 
