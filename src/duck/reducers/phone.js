@@ -1,4 +1,9 @@
-import { PHONE_SET_ERROR, PHONE_LOADING_DONE } from '../actions/types';
+import {
+  PHONE_SET_ERROR,
+  PHONE_LOADING_DONE,
+  PHONE_LOADING_BEGIN,
+  PHONE_LOADING_ERROR,
+} from '../actions/types';
 
 const initialState = {
   value: '',
@@ -9,17 +14,34 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
+    case PHONE_LOADING_BEGIN:
+      return {
+        value: action.value,
+        loading: true,
+        error: '',
+        serverError: '',
+      };
+    case PHONE_LOADING_DONE:
+      return {
+        ...state,
+        loading: false,
+        error: '',
+        serverError: false,
+      };
+    case PHONE_LOADING_ERROR:
+      return {
+        ...state,
+        value: '',
+        loading: false,
+        error: '',
+        serverError: true,
+      };
     case PHONE_SET_ERROR:
       return {
         value: '',
         loading: false,
+        serverError: true,
         error: action.error,
-      };
-    case PHONE_LOADING_DONE:
-      return {
-        value: action.phone,
-        loading: false,
-        error: '',
       };
     default:
       return state;
