@@ -35,8 +35,19 @@ const Car = props => {
       e.target.blur();
     }
   };
+  const onChange = e => {
+    let len;
+    if (Number.isInteger(Number(e.target.value.charAt(0)))) {
+      len = 8;
+    } else {
+      len = 7;
+    }
+    if (e.target.value.length === len) {
+      console.log('call api')
+    }
+  };
   return (
-    <Input {...carProps} onFocus={onFocus} uppercase />
+    <Input {...carProps} onChange={onChange} onFocus={onFocus} uppercase />
   );
 };
 
