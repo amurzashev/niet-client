@@ -4,13 +4,13 @@ import styled from '@emotion/styled';
 const Input = styled.input`
   height: 50px;
   width: 100%;
-  border-radius: 4px;
   appearance: none;
-  border: 1px solid ${props => props.theme.colors.darkGray};
+  border: 1px solid ${props => props.error ? props.theme.colors.error : props.theme.colors.darkGray};
   font-size: 16px;
   padding: 0 20px;
   box-sizing: border-box;
   font-family: 'Roboto', sans-serif;
+  color: ${props => props.error ? props.theme.colors.error : 'initial'};
   &:focus {
     outline: none;
   }
@@ -20,6 +20,4 @@ const Input = styled.input`
   }
 `;
 
-export default props => (
-  <Input {...props} />
-);
+export default props => <Input {...props} />;

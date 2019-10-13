@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import Status from './components/Status';
+import Inputs from './components/Inputs';
 
 const Wrap = styled.div`
   width: 70%;
@@ -18,5 +19,6 @@ const Wrap = styled.div`
 export default () => (
   <Wrap>
     <Status />
+    <Inputs />
   </Wrap>
 );

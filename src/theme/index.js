@@ -5,6 +5,7 @@ theme.colors = {
   primary: '#00a6ed',
   lightGray: '#eee',
   darkGray: '#e2e2e2',
+  error: 'red',
 };
 
 theme.breakpoints = {
