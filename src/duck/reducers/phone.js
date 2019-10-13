@@ -1,4 +1,4 @@
-import { PHONE_SET_ERROR } from '../actions/types';
+import { PHONE_SET_ERROR, PHONE_LOADING_DONE } from '../actions/types';
 
 const initialState = {
   value: '',
@@ -13,6 +13,12 @@ export default (state = initialState, action) => {
         value: '',
         loading: false,
         error: action.error,
+      };
+    case PHONE_LOADING_DONE:
+      return {
+        value: action.phone,
+        loading: false,
+        error: '',
       };
     default:
       return state;

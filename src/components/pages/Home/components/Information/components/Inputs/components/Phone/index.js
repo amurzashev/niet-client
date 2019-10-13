@@ -10,7 +10,7 @@ const phoneProps = {
   placeholder: 'Номер телефона',
 };
 
-const Phone = ({ phone, bindPhoneError }) => {
+const Phone = ({ phone, bindPhoneError, bindPhone }) => {
   useEffect(() => {
     if (phone.error) {
       const input = document.getElementById('phoneInput');
@@ -20,11 +20,12 @@ const Phone = ({ phone, bindPhoneError }) => {
   const onChange = e => {
     if (e.target.value.match(/[0-9]/g)) {
       const phoneVal = e.target.value.match(/[0-9]/g).join('');
-      if (phoneVal.length > 1) {
+      if (phoneVal.length > 1 && phone.error) {
         bindPhoneError('');
       }
       if (phoneVal.length === 11) {
         console.log('api call /phone and save to redux');
+        bindPhone(phoneVal);
       }
     }
   };
@@ -41,9 +42,11 @@ Phone.propTypes = {
     error: PropTypes.string,
   }).isRequired,
   bindPhoneError: PropTypes.func.isRequired,
+  bindPhone: PropTypes.func.isRequired,
 };
 const mapStateToProps = state => ({ phone: state.phone });
 const mapDispatchToProps = {
   bindPhoneError: setPhoneError,
+  bindPhone: setPhone,
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Phone);

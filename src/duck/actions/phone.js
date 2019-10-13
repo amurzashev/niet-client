@@ -10,12 +10,10 @@ export const setPhone = phoneVal => (
         type: PHONE_LOADING_BEGIN,
         phone: '',
       });
-      setTimeout(() => {
-        dispatch({
-          type: PHONE_LOADING_DONE,
-          phone: phoneVal,
-        });
-      }, 3000);
+      dispatch({
+        type: PHONE_LOADING_DONE,
+        phone: phoneVal,
+      });
     }
   }
 );
