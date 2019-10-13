@@ -43,7 +43,7 @@ const Car = props => {
       len = 7;
     }
     if (e.target.value.length === len) {
-      console.log('call api')
+      console.log('call api');
     }
   };
   return (
