@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Modal from '../molecules/Modal';
 
-export default ConnectedComponent => {
+export default ComposedComponent => {
   const Component = props => {
     const { modal } = props;
     return (
       <>
         { modal.isOpen ? <Modal type={modal.type} /> : null }
-        <ConnectedComponent {...props} />
+        <ComposedComponent {...props} />
       </>
     );
   };
