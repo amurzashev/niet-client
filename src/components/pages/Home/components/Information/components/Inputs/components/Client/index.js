@@ -8,6 +8,16 @@ const clientProps = {
   placeholder: 'ИИН водителя',
 };
 
-export default () => (
-  <Input {...clientProps} />
-);
+export default () => {
+  const onChange = e => {
+    if (e.target.value.match(/[0-9]/g)) {
+      const client = e.target.value.match(/[0-9]/g).join('');
+      if (client.length === 12) {
+        console.log('api call /client and save to redux');
+      }
+    }
+  };
+  return (
+    <Input {...clientProps} onChange={onChange} />
+  );
+};

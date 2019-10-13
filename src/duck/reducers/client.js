@@ -1,7 +1,7 @@
 const initialState = {
   iin: '',
   name: '',
-  isLoading: false,
+  loading: false,
   error: false,
 };
 

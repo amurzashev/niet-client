@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import Phone from './components/Phone';
-// import Client from './components/Client';
+import Client from './components/Client';
 import Car from './components/Car';
 
 const Wrap = styled.div`
@@ -11,7 +11,7 @@ const Wrap = styled.div`
 export default () => (
   <Wrap>
     <Phone />
-    {/* <Client /> */}
+    <Client />
     <Car />
   </Wrap>
 );

@@ -9,10 +9,15 @@ const phoneProps = {
 
 export default () => {
   const onChange = e => {
-    const phone = e.target.value.match(/[0-9]/g).join('');
-    if (phone.length === 11) {
-      console.log('api call /phone and save to redux');
+    if (e.target.value.match(/[0-9]/g)) {
+      const phone = e.target.value.match(/[0-9]/g).join('');
+      if (phone.length === 11) {
+        console.log('api call /phone and save to redux');
+      }
     }
+  };
+  const onFocus = e => {
+    // remove phone errors
   };
   return (
     <Input {...phoneProps} onChange={onChange} />

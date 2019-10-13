@@ -18,6 +18,9 @@ const Input = styled.input`
     background: ${props => props.theme.colors.lightGray};
     cursor: not-allowed;
   }
+  ${props => props.uppercase && `
+    text-transform: uppercase;
+  `}
 `;
 
 export default props => <Input {...props} />;
