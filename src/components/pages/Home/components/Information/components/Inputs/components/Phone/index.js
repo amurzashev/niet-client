@@ -32,8 +32,16 @@ const Phone = ({ phone, bindPhoneError, bindPhone }) => {
   const onFocus = () => {
     // remove phone errors
   };
+  const onBlur = e => {
+    if (e.target.value.match(/[0-9]/g)) {
+      const phoneVal = e.target.value.match(/[0-9]/g).join('');
+      if (phoneVal.length < 11) {
+        bindPhoneError('Заполните телефон');
+      }
+    }
+  };
   return (
-    <Input {...phoneProps} onChange={onChange} error={phone.error} onFocus={onFocus} id="phoneInput" />
+    <Input {...phoneProps} onBlur={onBlur} onChange={onChange} error={phone.error} onFocus={onFocus} id="phoneInput" />
   );
 };
 

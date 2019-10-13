@@ -13,12 +13,14 @@ const Mask = props => {
     error,
     onFocus,
     id,
+    onBlur,
   } = props;
   const maskProps = {
     mask,
     value,
     onChange,
     onFocus,
+    onBlur,
   };
   const textProps = {
     placeholder,
@@ -39,6 +41,7 @@ Mask.propTypes = {
   value: PropTypes.string,
   onChange: PropTypes.func.isRequired,
   onFocus: PropTypes.func,
+  onBlur: PropTypes.func,
   autoFocus: PropTypes.bool,
   error: PropTypes.string,
   id: PropTypes.string,
@@ -49,6 +52,7 @@ Mask.defaultProps = {
   value: null,
   error: '',
   onFocus: () => null,
+  onBlur: () => null,
   id: null,
 };
 export default Mask;

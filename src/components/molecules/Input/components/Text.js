@@ -6,6 +6,7 @@ const Input = styled.input`
   width: 100%;
   appearance: none;
   border: 1px solid ${props => props.error ? props.theme.colors.error : props.theme.colors.darkGray};
+  border-radius: 0;
   font-size: 16px;
   padding: 0 20px;
   box-sizing: border-box;
