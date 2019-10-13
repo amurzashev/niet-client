@@ -8,7 +8,7 @@ export default ConnectedComponent => {
     const { modal } = props;
     return (
       <>
-        { modal.isOpen ? <Modal /> : null }
+        { modal.isOpen ? <Modal type={modal.type} /> : null }
         <ConnectedComponent {...props} />
       </>
     );
@@ -16,6 +16,11 @@ export default ConnectedComponent => {
   Component.propTypes = {
     modal: PropTypes.shape({
       isOpen: PropTypes.bool,
+      type: PropTypes.oneOf([
+        'loading',
+        'additionalDriver',
+        'additionalCar',
+      ]),
     }).isRequired,
   };
   const mapStateToProps = state => state;

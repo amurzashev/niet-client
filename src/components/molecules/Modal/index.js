@@ -8,6 +8,11 @@ const Wrap = styled.section`
   left: 0;
   bottom: 0;
   background: rgba(0,0,0,0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
+
+// loading, additionalCar, additionalDriver
 
 export default () => <Wrap />;
