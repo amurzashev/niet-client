@@ -1,4 +1,4 @@
-import { PHONE_LOADING_ERROR } from '../actions/types';
+import { PHONE_SET_ERROR } from '../actions/types';
 
 const initialState = {
   value: '',
@@ -8,7 +8,7 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case PHONE_LOADING_ERROR:
+    case PHONE_SET_ERROR:
       return {
         value: '',
         loading: false,

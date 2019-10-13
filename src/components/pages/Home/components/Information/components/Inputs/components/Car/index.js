@@ -1,6 +1,9 @@
 import React from 'react';
 import Input from 'components/molecules/Input';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { setPhoneError } from 'duck/actions/phone';
+import { setClientError } from 'duck/actions/client';
 
 const carProps = {
   type: 'text',
@@ -9,15 +12,47 @@ const carProps = {
 
 const Car = props => {
   const onFocus = e => {
-    // const { phone } = props;
-    // if (!phone.value) {
-    //   e.target.blur();
-    // }
+    const {
+      phone,
+      client,
+      bindPhoneError,
+      bindClientError,
+    } = props;
+    let shouldBlur = false;
+    if (!client.iin) {
+      shouldBlur = true;
+      bindClientError('Заполните ИИН');
+      const clientInput = document.getElementById('clientInput');
+      clientInput.focus();
+    }
+    if (!phone.value) {
+      shouldBlur = true;
+      bindPhoneError('Заполните телефон');
+      const phoneInput = document.getElementById('phoneInput');
+      phoneInput.focus();
+    }
+    if (shouldBlur) {
+      e.target.blur();
+    }
   };
   return (
     <Input {...carProps} onFocus={onFocus} uppercase />
   );
 };
 
+Car.propTypes = {
+  phone: PropTypes.shape({
+    value: PropTypes.string,
+  }).isRequired,
+  client: PropTypes.shape({
+    iin: PropTypes.string,
+  }).isRequired,
+  bindPhoneError: PropTypes.func.isRequired,
+  bindClientError: PropTypes.func.isRequired,
+};
 const mapStateToProps = state => state;
-export default connect(mapStateToProps)(Car);
+const mapDispatchToProps = {
+  bindPhoneError: setPhoneError,
+  bindClientError: setClientError,
+};
+export default connect(mapStateToProps, mapDispatchToProps)(Car);

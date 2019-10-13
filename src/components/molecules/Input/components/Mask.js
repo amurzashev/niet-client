@@ -10,15 +10,21 @@ const Mask = props => {
     value,
     onChange,
     autoFocus,
+    error,
+    onFocus,
+    id,
   } = props;
   const maskProps = {
     mask,
     value,
     onChange,
+    onFocus,
   };
   const textProps = {
     placeholder,
     autoFocus,
+    error,
+    id,
   };
   return (
     <InputMask {...maskProps}>
@@ -32,11 +38,17 @@ Mask.propTypes = {
   placeholder: PropTypes.string,
   value: PropTypes.string,
   onChange: PropTypes.func.isRequired,
+  onFocus: PropTypes.func,
   autoFocus: PropTypes.bool,
+  error: PropTypes.string,
+  id: PropTypes.string,
 };
 Mask.defaultProps = {
   placeholder: '',
   autoFocus: false,
   value: null,
+  error: '',
+  onFocus: () => null,
+  id: null,
 };
 export default Mask;
