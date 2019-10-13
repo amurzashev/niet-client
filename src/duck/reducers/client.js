@@ -1,4 +1,9 @@
-import { CLIENT_SET_ERROR, CLIENT_LOADING_BEGIN, CLIENT_LOADING_ERROR, CLIENT_LOADING_DONE } from '../actions/types';
+import {
+  CLIENT_SET_ERROR,
+  CLIENT_LOADING_BEGIN,
+  CLIENT_LOADING_ERROR,
+  CLIENT_LOADING_DONE,
+} from '../actions/types';
 
 const initialState = {
   iin: '',
