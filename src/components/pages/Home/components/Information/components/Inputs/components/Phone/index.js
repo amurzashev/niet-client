@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Input from 'components/molecules/Input';
 
 const phoneProps = {
@@ -8,17 +8,19 @@ const phoneProps = {
 };
 
 export default () => {
-  const [value, setValue] = useState('');
   const onChange = e => {
-    setValue(e.target.value);
+    const phone = e.target.value.match(/[0-9]/g).join('');
+    if (phone.length === 11) {
+      console.log('api call /phone and save to redux');
+    }
   };
   return (
-    <Input {...phoneProps} value={value} onChange={onChange} />
+    <Input {...phoneProps} onChange={onChange} />
   );
 };
 
 /*
-  convert masked num to plain digits
+  convert masked num to plain digits => 11 length
   if (value.length) {
     console.log(value.match(/[0-9]/g).join(''));
   };

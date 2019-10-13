@@ -30,12 +30,13 @@ const Mask = props => {
 Mask.propTypes = {
   mask: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
-  value: PropTypes.string.isRequired,
+  value: PropTypes.string,
   onChange: PropTypes.func.isRequired,
   autoFocus: PropTypes.bool,
 };
 Mask.defaultProps = {
   placeholder: '',
   autoFocus: false,
+  value: null,
 };
 export default Mask;
