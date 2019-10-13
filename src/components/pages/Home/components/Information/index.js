@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
+import Status from './components/Status';
 
 const Wrap = styled.div`
   width: 70%;
@@ -14,10 +15,8 @@ const Wrap = styled.div`
   }
 `;
 
-export default () => {
-  return (
-    <Wrap>
-      test
-    </Wrap>
-  );
-};
+export default () => (
+  <Wrap>
+    <Status />
+  </Wrap>
+);
