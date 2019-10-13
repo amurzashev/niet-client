@@ -2,7 +2,7 @@ import React from 'react';
 import Input from 'components/molecules/Input';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { setClientError } from 'duck/actions/client';
+import { setClientError, setClient } from 'duck/actions/client';
 import { setPhoneError } from 'duck/actions/phone';
 
 const clientProps = {
@@ -17,13 +17,16 @@ const Client = ({
   client,
   phone,
   bindPhoneError,
+  bindClient,
 }) => {
   const onChange = e => {
     if (e.target.value.match(/[0-9]/g)) {
       const clientVal = e.target.value.match(/[0-9]/g).join('');
-      bindClientError('');
+      if (client.error) {
+        bindClientError('');
+      }
       if (clientVal.length === 12) {
-        console.log('api call /client and save to redux');
+        bindClient(clientVal);
       }
     }
   };
@@ -48,10 +51,12 @@ Client.propTypes = {
   }).isRequired,
   bindClientError: PropTypes.func.isRequired,
   bindPhoneError: PropTypes.func.isRequired,
+  bindClient: PropTypes.func.isRequired,
 };
 const mapStateToProps = state => ({ client: state.client, phone: state.phone });
 const mapDispatchToProps = {
   bindClientError: setClientError,
   bindPhoneError: setPhoneError,
+  bindClient: setClient,
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Client);

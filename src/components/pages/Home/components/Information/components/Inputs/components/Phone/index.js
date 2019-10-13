@@ -24,7 +24,6 @@ const Phone = ({ phone, bindPhoneError, bindPhone }) => {
         bindPhoneError('');
       }
       if (phoneVal.length === 11) {
-        console.log('api call /phone and save to redux');
         bindPhone(phoneVal);
       }
     }
