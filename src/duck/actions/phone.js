@@ -1,5 +1,5 @@
 /* eslint-disable import/prefer-default-export */
-// import { apiRequest } from '.';
+import { apiRequest } from '.';
 import { PHONE_LOADING_BEGIN, PHONE_LOADING_DONE, PHONE_SET_ERROR } from './types';
 
 export const setPhone = phoneVal => (
@@ -10,10 +10,11 @@ export const setPhone = phoneVal => (
         type: PHONE_LOADING_BEGIN,
         phone: '',
       });
-      dispatch({
-        type: PHONE_LOADING_DONE,
-        phone: phoneVal,
-      });
+      apiRequest.post('phone', { tel: phone })
+        .then(res => console.log(res))
+        .catch(er => {
+          console.log(er.response);
+        });
     }
   }
 );

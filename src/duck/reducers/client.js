@@ -5,6 +5,7 @@ const initialState = {
   name: '',
   loading: false,
   error: '',
+  serverError: false,
 };
 
 export default (state = initialState, action) => {

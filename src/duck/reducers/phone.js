@@ -4,6 +4,7 @@ const initialState = {
   value: '',
   loading: false,
   error: '',
+  serverError: false,
 };
 
 export default (state = initialState, action) => {
