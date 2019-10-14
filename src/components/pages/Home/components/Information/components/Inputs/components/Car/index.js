@@ -22,14 +22,14 @@ const Car = props => {
     if (!client.iin) {
       shouldBlur = true;
       bindClientError('Заполните ИИН');
-      const clientInput = document.getElementById('clientInput');
-      clientInput.focus();
+      // const clientInput = document.getElementById('clientInput');
+      // clientInput.focus();
     }
     if (!phone.value) {
       shouldBlur = true;
       bindPhoneError('Заполните телефон');
-      const phoneInput = document.getElementById('phoneInput');
-      phoneInput.focus();
+      // const phoneInput = document.getElementById('phoneInput');
+      // phoneInput.focus();
     }
     if (shouldBlur) {
       e.target.blur();

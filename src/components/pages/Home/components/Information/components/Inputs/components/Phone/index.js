@@ -13,8 +13,8 @@ const phoneProps = {
 const Phone = ({ phone, bindPhoneError, bindPhone }) => {
   useEffect(() => {
     if (phone.error) {
-      const input = document.getElementById('phoneInput');
-      input.focus();
+      // const input = document.getElementById('phoneInput');
+      // input.focus();
     }
   }, [phone.error]);
   const onChange = e => {

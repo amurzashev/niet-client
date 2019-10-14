@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Text from './components/Text';
 import Mask from './components/Mask';
+import Button from './components/Button';
 
 const Input = ({ type, ...props }) => {
   switch (type) {
@@ -9,6 +10,8 @@ const Input = ({ type, ...props }) => {
       return <Text {...props} />;
     case 'mask':
       return <Mask {...props} />;
+    case 'button':
+      return <Button {...props} />;
     default:
       return <p>WIP</p>;
   }
@@ -20,6 +23,7 @@ Input.propTypes = {
     'mask',
     'phone',
     'submit',
+    'button',
   ]).isRequired,
 };
 
