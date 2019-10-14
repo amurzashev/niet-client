@@ -11,7 +11,7 @@ const Input = ({ type, ...props }) => {
     case 'mask':
       return <Mask {...props} />;
     case 'button':
-      return <Button {...props} />;
+      return <Button {...props} type="submit" />;
     default:
       return <p>WIP</p>;
   }

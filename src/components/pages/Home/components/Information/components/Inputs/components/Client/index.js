@@ -33,7 +33,7 @@ const Client = ({
   const onFocus = () => {
     if (!phone.value) {
       bindPhoneError('Заполните телефон');
-      document.getElementById('phoneInput').focus();
+      // document.getElementById('phoneInput').focus();
     }
   };
   return (
