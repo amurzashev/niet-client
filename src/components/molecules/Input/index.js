@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Text from './components/Text';
 import Mask from './components/Mask';
 import Button from './components/Button';
+import Checkbox from './components/Checkbox';
 
 const Input = ({ type, ...props }) => {
   switch (type) {
@@ -12,6 +13,8 @@ const Input = ({ type, ...props }) => {
       return <Mask {...props} />;
     case 'button':
       return <Button {...props} type="submit" />;
+    case 'checkbox':
+      return <Checkbox {...props} type="checkbox" />;
     default:
       return <p>WIP</p>;
   }
@@ -24,6 +27,7 @@ Input.propTypes = {
     'phone',
     'submit',
     'button',
+    'checkbox',
   ]).isRequired,
 };
 
