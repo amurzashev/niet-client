@@ -48,7 +48,7 @@ const ChildWrap = styled.label`
 
 const Checkbox = ({ children, tick, toggleTick }) => (
   <Wrap onClick={() => toggleTick(!tick)}>
-    <StyledCheckbox type="checkbox" checked={tick} />
+    <StyledCheckbox type="checkbox" defaultChecked={tick} />
     <ChildWrap tick={tick}>
       {children}
     </ChildWrap>

@@ -3,8 +3,10 @@ import Input from 'components/molecules/Input';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { setClientError, setClient } from 'duck/actions/client';
+import styled from '@emotion/styled';
 import { setPhoneError } from 'duck/actions/phone';
 import Info from './components/Info';
+import AdditionalDriver from './components/AdditionalDriver';
 
 const clientProps = {
   type: 'mask',
@@ -12,6 +14,17 @@ const clientProps = {
   maskChar: ' ',
   placeholder: 'ИИН водителя',
 };
+
+const Wrap = styled.div``;
+
+const InputWrap = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  & > input {
+    width: 50%;
+  }
+`;
 
 const Client = ({
   bindClientError,
@@ -39,10 +52,13 @@ const Client = ({
     }
   };
   return (
-    <>
-      <Input {...clientProps} onChange={onChange} error={client.error} onFocus={onFocus} id="clientInput" />
+    <Wrap>
+      <InputWrap>
+        <Input {...clientProps} onChange={onChange} error={client.error} onFocus={onFocus} id="clientInput" />
+        <AdditionalDriver />
+      </InputWrap>
       <Info />
-    </>
+    </Wrap>
   );
 };
 
