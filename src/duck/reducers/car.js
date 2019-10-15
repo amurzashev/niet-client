@@ -9,6 +9,7 @@ const initialState = {
   model: '',
   certificate: '',
   vin: '',
+  year: '',
 };
 
 export default (state = initialState, action) => {
@@ -30,6 +31,7 @@ export default (state = initialState, action) => {
         model: action.model,
         certificate: action.certificate,
         vin: action.vin,
+        year: action.year,
       };
     case CAR_LOADING_ERROR:
       return {

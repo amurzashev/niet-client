@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-one-expression-per-line */
 import React from 'react';
 import styled from '@emotion/styled';
 import { connect } from 'react-redux';
@@ -9,22 +10,26 @@ const Wrap = styled.div`
   width: 100%;
 `;
 
-const Info = ({ client }) => {
-  return (
-    <Wrap>
-      {client.loading && <Caption size="s">Загрузка</Caption>}
-      {client.name && <Caption size="s">{client.name}</Caption>}
-      {client.error && <Caption size="s" color="error">{client.error}</Caption>}
-    </Wrap>
-  );
-};
+const Info = ({ car }) => (
+  <Wrap>
+    {car.loading && <Caption size="s">Загрузка</Caption>}
+    {car.make && <Caption size="s">{car.make} {car.model} {car.year}</Caption>}
+    {car.error && <Caption size="s" color="error">{car.error}</Caption>}
+    {car.serverError && <Caption size="s" color="error">Машина не найдена, проверьте правильность данных</Caption>}
+  </Wrap>
+);
 
 Info.propTypes = {
-  client: PropTypes.shape({
+  car: PropTypes.shape({
     loading: PropTypes.bool,
-    name: PropTypes.string,
     error: PropTypes.string,
+    serverError: PropTypes.string,
+    make: PropTypes.string,
+    model: PropTypes.string,
+    year: PropTypes.string,
+    vin: PropTypes.string,
+    certificate: PropTypes.string,
   }).isRequired,
 };
-const mapStateToProps = state => ({ client: state.client });
+const mapStateToProps = state => ({ car: state.car });
 export default connect(mapStateToProps)(Info);

@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import { setPhoneError } from 'duck/actions/phone';
 import { setClientError } from 'duck/actions/client';
 import { setCar } from 'duck/actions/car';
+import Info from './components/Info';
 
 const carProps = {
   type: 'text',
@@ -44,13 +45,15 @@ const Car = props => {
       len = 7;
     }
     if (e.target.value.length === len) {
-      console.log('call api');
       const { bindCar } = props;
       bindCar(e.target.value);
     }
   };
   return (
-    <Input {...carProps} onChange={onChange} onFocus={onFocus} uppercase />
+    <>
+      <Input {...carProps} onChange={onChange} onFocus={onFocus} uppercase />
+      <Info />
+    </>
   );
 };
 

@@ -29,6 +29,7 @@ export const setCar = license => (
               model: resp.data.data.Vehicle.MODEL,
               certificate: resp.data.data.Vehicle.REG_CERT_NUM,
               vin: resp.data.data.Vehicle.vin,
+              year: resp.data.data.Vehicle.NYEAR,
             });
           }
         })
