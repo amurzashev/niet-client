@@ -11,17 +11,19 @@ const Wrap = styled.div`
   width: 50%;
   cursor: pointer;
   align-items: center;
-  justify-content: center;
+  padding-left: 30px;
 `;
 
-const AdditionalDriver = ({ bindModal }) => (
-  <Wrap onClick={() => bindModal('additionalDriver')}>
-    <Caption size="s">Добавить водителя</Caption>
+const AdditionalDriver = ({ bindModal, modalType, text }) => (
+  <Wrap onClick={() => bindModal(modalType)}>
+    <Caption size="s">{text}</Caption>
   </Wrap>
 );
 
 AdditionalDriver.propTypes = {
   bindModal: PropTypes.func.isRequired,
+  modalType: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
 };
 const mapDispatchToProps = {
   bindModal: triggerModal,

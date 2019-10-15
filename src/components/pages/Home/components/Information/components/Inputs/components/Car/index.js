@@ -7,6 +7,7 @@ import { setClientError } from 'duck/actions/client';
 import { setCar } from 'duck/actions/car';
 import Info from './components/Info';
 import InputWrap from '../InputWrap';
+import AdditionalEntity from '../AdditionalEntity';
 
 const carProps = {
   type: 'text',
@@ -54,6 +55,7 @@ const Car = props => {
     <>
       <InputWrap>
         <Input {...carProps} onChange={onChange} onFocus={onFocus} uppercase />
+        <AdditionalEntity modalType="additionalCar" text="Добавить машину" />
       </InputWrap>
       <Info />
     </>

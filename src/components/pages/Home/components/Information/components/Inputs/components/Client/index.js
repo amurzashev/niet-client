@@ -6,7 +6,7 @@ import { setClientError, setClient } from 'duck/actions/client';
 import styled from '@emotion/styled';
 import { setPhoneError } from 'duck/actions/phone';
 import Info from './components/Info';
-import AdditionalDriver from './components/AdditionalDriver';
+import AdditionalEntity from '../AdditionalEntity';
 import InputWrap from '../InputWrap';
 
 const clientProps = {
@@ -47,7 +47,7 @@ const Client = ({
     <Wrap>
       <InputWrap>
         <Input {...clientProps} onChange={onChange} error={client.error} onFocus={onFocus} id="clientInput" />
-        <AdditionalDriver />
+        <AdditionalEntity modalType="additionalDriver" text="Добавить водителя" />
       </InputWrap>
       <Info />
     </Wrap>
