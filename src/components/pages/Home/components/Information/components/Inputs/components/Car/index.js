@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { setPhoneError } from 'duck/actions/phone';
 import { setClientError } from 'duck/actions/client';
+import { setCar } from 'duck/actions/car';
 
 const carProps = {
   type: 'text',
@@ -44,6 +45,8 @@ const Car = props => {
     }
     if (e.target.value.length === len) {
       console.log('call api');
+      const { bindCar } = props;
+      bindCar(e.target.value);
     }
   };
   return (
@@ -60,10 +63,12 @@ Car.propTypes = {
   }).isRequired,
   bindPhoneError: PropTypes.func.isRequired,
   bindClientError: PropTypes.func.isRequired,
+  bindCar: PropTypes.func.isRequired,
 };
 const mapStateToProps = state => state;
 const mapDispatchToProps = {
   bindPhoneError: setPhoneError,
   bindClientError: setClientError,
+  bindCar: setCar,
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Car);

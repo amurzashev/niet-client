@@ -1,6 +1,7 @@
+/* eslint-disable import/prefer-default-export */
 import { apiRequest } from '.';
 import {
-  CAR_SET_ERROR,
+  // CAR_SET_ERROR,
   CAR_LOADING_BEGIN,
   CAR_LOADING_DONE,
   CAR_LOADING_ERROR,
@@ -8,39 +9,34 @@ import {
 
 export const setCar = license => (
   (dispatch, getState) => {
-    const { client, phone } = getState();
-    if (client.iin !== iinValue) {
+    const { car } = getState();
+    if (car.license !== license) {
       dispatch({
-        type: CLIENT_LOADING_BEGIN,
-        iin: iinValue,
+        type: CAR_LOADING_BEGIN,
+        license,
       });
-      apiRequest.post('client', { iin: iinValue, phone: phone.value })
+      apiRequest.post('car', { license })
         .then(resp => {
-          if (resp.status === 200) {
+          if (resp.data.warning || resp.data.error) {
             dispatch({
-              type: CLIENT_LOADING_DONE,
-              name: resp.data.response,
+              type: CAR_LOADING_ERROR,
             });
           } else {
             dispatch({
-              type: CLIENT_LOADING_ERROR,
+              type: CAR_LOADING_DONE,
+              license: resp.data.data.Vehicle.REG_NUM,
+              make: resp.data.data.Vehicle.MARK,
+              model: resp.data.data.Vehicle.MODEL,
+              certificate: resp.data.data.Vehicle.REG_CERT_NUM,
+              vin: resp.data.data.Vehicle.vin,
             });
           }
         })
         .catch(() => {
           dispatch({
-            type: CLIENT_LOADING_ERROR,
+            type: CAR_LOADING_ERROR,
           });
         });
     }
-  }
-);
-
-export const setClientError = (error = '') => (
-  dispatch => {
-    dispatch({
-      type: CLIENT_SET_ERROR,
-      error,
-    });
   }
 );
