@@ -25,7 +25,7 @@ export default (state = initialState, action) => {
         ...state,
         loading: false,
         error: '',
-        serverError: '',
+        serverError: false,
         license: action.license,
         make: action.make,
         model: action.model,

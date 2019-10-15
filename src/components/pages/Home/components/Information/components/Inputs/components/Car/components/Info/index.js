@@ -23,7 +23,7 @@ Info.propTypes = {
   car: PropTypes.shape({
     loading: PropTypes.bool,
     error: PropTypes.string,
-    serverError: PropTypes.string,
+    serverError: PropTypes.bool,
     make: PropTypes.string,
     model: PropTypes.string,
     year: PropTypes.string,
