@@ -6,6 +6,7 @@ import { setPhoneError } from 'duck/actions/phone';
 import { setClientError } from 'duck/actions/client';
 import { setCar } from 'duck/actions/car';
 import Info from './components/Info';
+import InputWrap from '../InputWrap';
 
 const carProps = {
   type: 'text',
@@ -51,7 +52,9 @@ const Car = props => {
   };
   return (
     <>
-      <Input {...carProps} onChange={onChange} onFocus={onFocus} uppercase />
+      <InputWrap>
+        <Input {...carProps} onChange={onChange} onFocus={onFocus} uppercase />
+      </InputWrap>
       <Info />
     </>
   );

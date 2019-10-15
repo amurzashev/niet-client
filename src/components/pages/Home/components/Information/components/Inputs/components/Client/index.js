@@ -7,6 +7,7 @@ import styled from '@emotion/styled';
 import { setPhoneError } from 'duck/actions/phone';
 import Info from './components/Info';
 import AdditionalDriver from './components/AdditionalDriver';
+import InputWrap from '../InputWrap';
 
 const clientProps = {
   type: 'mask',
@@ -16,15 +17,6 @@ const clientProps = {
 };
 
 const Wrap = styled.div``;
-
-const InputWrap = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  & > input {
-    width: 50%;
-  }
-`;
 
 const Client = ({
   bindClientError,
