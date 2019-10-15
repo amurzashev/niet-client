@@ -16,11 +16,19 @@ const Wrap = styled.section`
   z-index: 100;
 `;
 
+const WindowWrap = styled.div`
+  background: ${props => props.theme.colors.white};
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
 // loading, additionalCar, additionalDriver
 const renderWindow = {
-  loading: <div>loading</div>,
-  additionalCar: <div>additionalCar</div>,
-  additionalDriver: <div>additionalDriver</div>,
+  loading: <WindowWrap>loading</WindowWrap>,
+  additionalCar: <WindowWrap>additionalCar</WindowWrap>,
+  additionalDriver: <WindowWrap>additionalDriver</WindowWrap>,
 };
 
 const Modal = ({ modal }) => (
