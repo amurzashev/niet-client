@@ -7,4 +7,10 @@ export default styled.div`
   & > input {
     width: 50%;
   }
+  ${props => props.theme.breakpoints.mobile} {
+    flex-direction: column;
+    & > input {
+      width: 100%;
+    }
+  }
 `;
