@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+// import {  } from 'duck/actions/car';
+import { setPhoneError } from 'duck/actions/phone';
+import { setClientError } from 'duck/actions/client';
 
 const Wrap = styled.section`
   position: fixed;
@@ -31,16 +34,36 @@ const renderWindow = {
   additionalDriver: <WindowWrap>additionalDriver</WindowWrap>,
 };
 
-const Modal = ({ modal }) => (
-  <Wrap>
-    {renderWindow[modal.category]}
-  </Wrap>
-);
+const Modal = ({ modal, bindClientError, bindPhoneError, phone, client }) => {
+
+  if (!phone.value) {
+    bindPhoneError('Заполните ИИН');
+    return null;
+  }
+  if (!client.iin) {
+    bindClientError('Заполните телефон');
+    return null;
+  }
+
+  return (
+    <Wrap>
+      {renderWindow[modal.category]}
+    </Wrap>
+  );
+};
 
 Modal.propTypes = {
   modal: PropTypes.shape({
     category: PropTypes.oneOf(['loading', 'additionalCar', 'additionalDriver']),
   }).isRequired,
+  bindClientError: PropTypes.func.isRequired,
+  bindPhoneError: PropTypes.func.isRequired,
+  client: PropTypes.shape({ iin: PropTypes.string }).isRequired,
+  phone: PropTypes.shape({ value: PropTypes.string }).isRequired,
 };
-const mapStateToProps = state => ({ modal: state.modal });
-export default connect(mapStateToProps)(Modal);
+const mapStateToProps = state => state;
+const mapDispatchToProps = {
+  bindClientError: setClientError,
+  bindPhoneError: setPhoneError,
+};
+export default connect(mapStateToProps, mapDispatchToProps)(Modal);
