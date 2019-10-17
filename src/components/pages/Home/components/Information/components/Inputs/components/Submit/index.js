@@ -4,6 +4,6 @@ import InputWrap from '../InputWrap';
 
 export default () => (
   <InputWrap>
-    <Input value="Далее" type="button" />
+    <Input value="Далее" type="button" width="50%" />
   </InputWrap>
 );
