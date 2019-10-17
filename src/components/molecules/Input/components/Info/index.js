@@ -36,7 +36,10 @@ const Info = ({ entity, ...props }) => {
 };
 
 Info.propTypes = {
-  entity: PropTypes.oneOf(['', 'car', 'client', 'phone']).isRequired,
+  entity: PropTypes.oneOf(['', 'car', 'client', 'phone']),
+};
+Info.defaultProps = {
+  entity: '',
 };
 const mapStateToProps = state => state;
 export default connect(mapStateToProps)(Info);

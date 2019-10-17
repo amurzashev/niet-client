@@ -17,9 +17,18 @@ const Wrap = styled.div`
   }
 `;
 
+const CaptionWrap = styled.div`
+  padding: 0 0 15px 15px;
+  ${props => props.theme.breakpoints.mobile} {
+    padding: 0 0 15px 0;
+  }
+`;
+
 const AdditionalDriver = ({ bindModal, modalType, text }) => (
   <Wrap onClick={() => bindModal(modalType)}>
-    <Caption size="s" style={{ paddingLeft: 30 }}>{text}</Caption>
+    <CaptionWrap>
+      <Caption size="s">{text}</Caption>
+    </CaptionWrap>
   </Wrap>
 );
 
