@@ -1,7 +1,13 @@
 import React from 'react';
+import styled from '@emotion/styled';
 import InputMask from 'react-input-mask';
 import PropTypes from 'prop-types';
 import Text from './Text';
+import Info from './Info';
+
+const Wrap = styled.div`
+  width: ${props => props.width};
+`;
 
 const Mask = props => {
   const {
@@ -14,6 +20,8 @@ const Mask = props => {
     onFocus,
     id,
     onBlur,
+    width,
+    entity,
   } = props;
   const maskProps = {
     mask,
@@ -29,9 +37,12 @@ const Mask = props => {
     id,
   };
   return (
-    <InputMask {...maskProps}>
-      {inputProps => <Text {...inputProps} {...textProps} />}
-    </InputMask>
+    <Wrap width={width}>
+      <InputMask {...maskProps}>
+        {inputProps => <Text {...inputProps} {...textProps} />}
+      </InputMask>
+      <Info entity={entity} />
+    </Wrap>
   );
 };
 
@@ -45,6 +56,8 @@ Mask.propTypes = {
   autoFocus: PropTypes.bool,
   error: PropTypes.string,
   id: PropTypes.string,
+  width: PropTypes.string,
+  entity: PropTypes.string,
 };
 Mask.defaultProps = {
   placeholder: '',
@@ -54,5 +67,7 @@ Mask.defaultProps = {
   onFocus: () => null,
   onBlur: () => null,
   id: null,
+  width: '100%',
+  entity: '',
 };
 export default Mask;

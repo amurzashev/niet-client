@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 import { setPhoneError } from 'duck/actions/phone';
 import { setClientError } from 'duck/actions/client';
 import { setCar } from 'duck/actions/car';
-import Info from './components/Info';
 import InputWrap from '../InputWrap';
 import AdditionalEntity from '../AdditionalEntity';
 
@@ -52,13 +51,10 @@ const Car = props => {
     }
   };
   return (
-    <>
-      <InputWrap>
-        <Input {...carProps} onChange={onChange} onFocus={onFocus} uppercase />
-        <AdditionalEntity modalType="additionalCar" text="Добавить машину" />
-      </InputWrap>
-      <Info />
-    </>
+    <InputWrap>
+      <Input {...carProps} onChange={onChange} onFocus={onFocus} uppercase entity="car" />
+      <AdditionalEntity modalType="additionalCar" text="Добавить машину" />
+    </InputWrap>
   );
 };
 

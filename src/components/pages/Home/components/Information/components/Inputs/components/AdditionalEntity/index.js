@@ -12,6 +12,10 @@ const Wrap = styled.div`
   cursor: pointer;
   align-items: center;
   padding-left: 30px;
+  ${props => props.theme.breakpoints.mobile} {
+    padding-left: 0;
+    width: 100%;
+  }
 `;
 
 const AdditionalDriver = ({ bindModal, modalType, text }) => (

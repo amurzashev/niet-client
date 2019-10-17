@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 import { setClientError, setClient } from 'duck/actions/client';
 import styled from '@emotion/styled';
 import { setPhoneError } from 'duck/actions/phone';
-import Info from './components/Info';
 import AdditionalEntity from '../AdditionalEntity';
 import InputWrap from '../InputWrap';
 
@@ -46,10 +45,9 @@ const Client = ({
   return (
     <Wrap>
       <InputWrap>
-        <Input {...clientProps} onChange={onChange} error={client.error} onFocus={onFocus} id="clientInput" />
+        <Input {...clientProps} onChange={onChange} error={client.error} onFocus={onFocus} id="clientInput" entity="client" />
         <AdditionalEntity modalType="additionalDriver" text="Добавить водителя" />
       </InputWrap>
-      <Info />
     </Wrap>
   );
 };
