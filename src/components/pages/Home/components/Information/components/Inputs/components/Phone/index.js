@@ -41,7 +41,7 @@ const Phone = ({ phone, bindPhoneError, bindPhone }) => {
     }
   };
   return (
-    <InputWrap>
+    <InputWrap phone>
       <Input {...phoneProps} onBlur={onBlur} onChange={onChange} error={phone.error} onFocus={onFocus} id="phoneInput" entity="phone" />
     </InputWrap>
   );

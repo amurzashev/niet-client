@@ -2,7 +2,9 @@ import React from 'react';
 import styled from '@emotion/styled';
 import Info from './Info';
 
-const Wrap = styled.div``;
+const Wrap = styled.div`
+  width: 100%;
+`;
 
 const Input = styled.input`
   height: 50px;
