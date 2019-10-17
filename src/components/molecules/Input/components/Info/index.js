@@ -20,8 +20,7 @@ const Info = ({ entity, ...props }) => {
   };
   if (entity === 'client') {
     info.name = nameFormatting(props[entity].name);
-  }
-  if (entity === 'car') {
+  } else {
     info.name = props[entity].name;
   }
 
