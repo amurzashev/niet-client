@@ -40,7 +40,7 @@ export default (state = initialState, action) => {
       return {
         value: '',
         loading: false,
-        serverError: true,
+        serverError: false,
         error: action.error,
       };
     default:

@@ -13,6 +13,9 @@ const clientProps = {
   mask: '999999999999',
   maskChar: ' ',
   placeholder: 'ИИН водителя',
+  id: 'clientInput',
+  entity: 'client',
+  width: '100%',
 };
 
 const Wrap = styled.div``;
@@ -45,7 +48,7 @@ const Client = ({
   return (
     <Wrap>
       <InputWrap>
-        <Input {...clientProps} onChange={onChange} error={client.error} onFocus={onFocus} id="clientInput" entity="client" />
+        <Input {...clientProps} onChange={onChange} error={client.error} onFocus={onFocus} />
         <AdditionalEntity modalType="additionalDriver" text="Добавить водителя" />
       </InputWrap>
     </Wrap>

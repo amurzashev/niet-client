@@ -11,6 +11,8 @@ import AdditionalEntity from '../AdditionalEntity';
 const carProps = {
   type: 'text',
   placeholder: 'A123ABC или 123ABC01',
+  entity: 'car',
+  width: '100%',
 };
 
 const Car = props => {
@@ -52,7 +54,7 @@ const Car = props => {
   };
   return (
     <InputWrap>
-      <Input {...carProps} onChange={onChange} onFocus={onFocus} uppercase entity="car" />
+      <Input {...carProps} onChange={onChange} onFocus={onFocus} uppercase />
       <AdditionalEntity modalType="additionalCar" text="Добавить машину" />
     </InputWrap>
   );

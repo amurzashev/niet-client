@@ -3,7 +3,6 @@ import Input from 'components/molecules/Input';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { setPhoneError, setPhone } from 'duck/actions/phone';
-import Info from './components/Info';
 import InputWrap from '../InputWrap';
 
 const phoneProps = {
@@ -42,12 +41,9 @@ const Phone = ({ phone, bindPhoneError, bindPhone }) => {
     }
   };
   return (
-    <>
-      <InputWrap>
-        <Input {...phoneProps} onBlur={onBlur} onChange={onChange} error={phone.error} onFocus={onFocus} id="phoneInput" />
-      </InputWrap>
-      <Info />
-    </>
+    <InputWrap>
+      <Input {...phoneProps} onBlur={onBlur} onChange={onChange} error={phone.error} onFocus={onFocus} id="phoneInput" entity="phone" />
+    </InputWrap>
   );
 };
 

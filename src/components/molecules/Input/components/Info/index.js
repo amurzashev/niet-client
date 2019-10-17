@@ -20,8 +20,9 @@ const Info = ({ entity, ...props }) => {
   };
   if (entity === 'client') {
     info.name = nameFormatting(props[entity].name);
-  } else {
-    info.name = props[entity].name;
+  }
+  if (entity === 'car') {
+    info.name = `${props[entity].make} ${props[entity].model} ${props[entity].year}`;
   }
 
   return (
@@ -35,7 +36,7 @@ const Info = ({ entity, ...props }) => {
 };
 
 Info.propTypes = {
-  entity: PropTypes.oneOf(['', 'car', 'client']).isRequired,
+  entity: PropTypes.oneOf(['', 'car', 'client', 'phone']).isRequired,
 };
 const mapStateToProps = state => state;
 export default connect(mapStateToProps)(Info);

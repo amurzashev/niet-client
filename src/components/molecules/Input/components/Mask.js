@@ -6,7 +6,7 @@ import Text from './Text';
 import Info from './Info';
 
 const Wrap = styled.div`
-  width: ${props => props.width};
+  width: 100%;
 `;
 
 const Mask = props => {
@@ -20,8 +20,8 @@ const Mask = props => {
     onFocus,
     id,
     onBlur,
-    width,
     entity,
+    width,
   } = props;
   const maskProps = {
     mask,
@@ -35,9 +35,10 @@ const Mask = props => {
     autoFocus,
     error,
     id,
+    width,
   };
   return (
-    <Wrap width={width}>
+    <Wrap>
       <InputMask {...maskProps}>
         {inputProps => <Text {...inputProps} {...textProps} />}
       </InputMask>

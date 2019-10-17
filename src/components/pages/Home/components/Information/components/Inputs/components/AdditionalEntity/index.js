@@ -8,7 +8,7 @@ import { triggerModal } from 'duck/actions/modal';
 const Wrap = styled.div`
   display: flex;
   flex-direction: row;
-  width: 50%;
+  width: 100%;
   cursor: pointer;
   align-items: center;
   padding-left: 30px;
