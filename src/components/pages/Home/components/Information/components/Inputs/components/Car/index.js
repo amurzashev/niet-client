@@ -8,7 +8,7 @@ import { setCar } from 'duck/actions/car';
 import InputWrap from '../InputWrap';
 import AdditionalEntity from '../AdditionalEntity';
 
-const carProps = {
+const staticProps = {
   type: 'text',
   placeholder: 'A123ABC или 123ABC01',
   entity: 'car',
@@ -54,9 +54,14 @@ const Car = props => {
     }
   };
   const { car } = props;
+  const dynamicProps = {
+    onChange,
+    onFocus,
+    error: car.error || car.serverError,
+  };
   return (
     <InputWrap>
-      <Input {...carProps} onChange={onChange} onFocus={onFocus} error={car.error || car.serverError} />
+      <Input {...staticProps} {...dynamicProps} />
       <AdditionalEntity modalType="additionalCar" text="Добавить машину" />
     </InputWrap>
   );

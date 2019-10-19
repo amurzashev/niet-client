@@ -1,4 +1,9 @@
-import { CAR_LOADING_BEGIN, CAR_LOADING_DONE, CAR_LOADING_ERROR, CAR_SET_ERROR } from '../actions/types';
+import {
+  CAR_LOADING_BEGIN,
+  CAR_LOADING_DONE,
+  CAR_LOADING_ERROR,
+  CAR_SET_ERROR,
+} from '../actions/types';
 
 const initialState = {
   loading: false,
