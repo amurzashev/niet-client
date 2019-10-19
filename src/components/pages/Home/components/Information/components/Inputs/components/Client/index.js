@@ -3,7 +3,7 @@ import Input from 'components/molecules/Input';
 import Caption from 'components/atoms/Caption';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { setClientError, setClient } from 'duck/actions/client';
+import { setClientError, setClient, setTick } from 'duck/actions/client';
 import styled from '@emotion/styled';
 import { setPhoneError } from 'duck/actions/phone';
 import AdditionalEntity from '../AdditionalEntity';
@@ -32,6 +32,7 @@ const Client = ({
   phone,
   bindPhoneError,
   bindClient,
+  bindTick,
 }) => {
   const onChange = e => {
     if (e.target.value.match(/[0-9]/g)) {
@@ -57,7 +58,7 @@ const Client = ({
         <Input {...clientProps} onChange={onChange} error={client.error} onFocus={onFocus} />
         <AdditionalEntity modalType="additionalDriver" text="Добавить водителя" />
       </InputWrap>
-      <Input {...checkProps}>
+      <Input {...checkProps} tick={client.tick} toggleTick={bindTick}>
         <Caption size="s">Льготы для инвалидов и ветеранов</Caption>
       </Input>
     </Wrap>
@@ -68,6 +69,7 @@ const Client = ({
 Client.propTypes = {
   client: PropTypes.shape({
     error: PropTypes.string,
+    tick: PropTypes.bool,
   }).isRequired,
   phone: PropTypes.shape({
     value: PropTypes.string,
@@ -75,11 +77,13 @@ Client.propTypes = {
   bindClientError: PropTypes.func.isRequired,
   bindPhoneError: PropTypes.func.isRequired,
   bindClient: PropTypes.func.isRequired,
+  bindTick: PropTypes.func.isRequired,
 };
 const mapStateToProps = state => ({ client: state.client, phone: state.phone });
 const mapDispatchToProps = {
   bindClientError: setClientError,
   bindPhoneError: setPhoneError,
   bindClient: setClient,
+  bindTick: setTick,
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Client);

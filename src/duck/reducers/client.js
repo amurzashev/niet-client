@@ -3,6 +3,7 @@ import {
   CLIENT_LOADING_BEGIN,
   CLIENT_LOADING_ERROR,
   CLIENT_LOADING_DONE,
+  CLIENT_SET_TICK,
 } from '../actions/types';
 
 const initialState = {
@@ -41,6 +42,11 @@ export default (state = initialState, action) => {
       return {
         ...initialState,
         error: action.error,
+      };
+    case CLIENT_SET_TICK:
+      return {
+        ...state,
+        tick: action.tick,
       };
     default:
       return state;

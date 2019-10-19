@@ -4,6 +4,7 @@ import {
   CLIENT_LOADING_BEGIN,
   CLIENT_LOADING_DONE,
   CLIENT_LOADING_ERROR,
+  CLIENT_SET_TICK,
 } from './types';
 
 export const setClient = iinValue => (
@@ -41,6 +42,16 @@ export const setClientError = (error = '') => (
     dispatch({
       type: CLIENT_SET_ERROR,
       error,
+    });
+  }
+);
+
+export const setTick = () => (
+  (dispatch, getState) => {
+    const { client } = getState();
+    dispatch({
+      type: CLIENT_SET_TICK,
+      tick: !client.tick,
     });
   }
 );
