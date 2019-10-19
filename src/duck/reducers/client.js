@@ -10,6 +10,7 @@ const initialState = {
   name: '',
   loading: false,
   error: '',
+  tick: false,
   serverError: false,
 };
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import Input from 'components/molecules/Input';
+import Caption from 'components/atoms/Caption';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { setClientError, setClient } from 'duck/actions/client';
@@ -15,6 +16,11 @@ const clientProps = {
   placeholder: 'ИИН водителя',
   id: 'clientInput',
   entity: 'client',
+  width: '100%',
+};
+
+const checkProps = {
+  type: 'checkbox',
   width: '100%',
 };
 
@@ -51,6 +57,9 @@ const Client = ({
         <Input {...clientProps} onChange={onChange} error={client.error} onFocus={onFocus} />
         <AdditionalEntity modalType="additionalDriver" text="Добавить водителя" />
       </InputWrap>
+      <Input {...checkProps}>
+        <Caption size="s">Льготы для инвалидов и ветеранов</Caption>
+      </Input>
     </Wrap>
   );
 };

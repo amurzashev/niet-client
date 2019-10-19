@@ -28,7 +28,7 @@ export const setCar = license => (
               make: resp.data.data.Vehicle.MARK,
               model: resp.data.data.Vehicle.MODEL,
               certificate: resp.data.data.Vehicle.REG_CERT_NUM,
-              vin: resp.data.data.Vehicle.vin,
+              vin: resp.data.data.Vehicle.VIN,
               year: resp.data.data.Vehicle.NYEAR,
             });
           }

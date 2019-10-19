@@ -13,6 +13,7 @@ const carProps = {
   placeholder: 'A123ABC или 123ABC01',
   entity: 'car',
   width: '100%',
+  uppercase: true,
 };
 
 const Car = props => {
@@ -52,9 +53,10 @@ const Car = props => {
       bindCar(e.target.value);
     }
   };
+  const { car } = props;
   return (
     <InputWrap>
-      <Input {...carProps} onChange={onChange} onFocus={onFocus} uppercase />
+      <Input {...carProps} onChange={onChange} onFocus={onFocus} error={car.error || car.serverError} />
       <AdditionalEntity modalType="additionalCar" text="Добавить машину" />
     </InputWrap>
   );
@@ -66,6 +68,10 @@ Car.propTypes = {
   }).isRequired,
   client: PropTypes.shape({
     iin: PropTypes.string,
+  }).isRequired,
+  car: PropTypes.shape({
+    error: PropTypes.string,
+    serverError: PropTypes.bool,
   }).isRequired,
   bindPhoneError: PropTypes.func.isRequired,
   bindClientError: PropTypes.func.isRequired,

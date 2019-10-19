@@ -1,4 +1,4 @@
-import { CAR_LOADING_BEGIN, CAR_LOADING_DONE, CAR_LOADING_ERROR } from '../actions/types';
+import { CAR_LOADING_BEGIN, CAR_LOADING_DONE, CAR_LOADING_ERROR, CAR_SET_ERROR } from '../actions/types';
 
 const initialState = {
   loading: false,
@@ -37,6 +37,11 @@ export default (state = initialState, action) => {
       return {
         ...initialState,
         serverError: true,
+      };
+    case CAR_SET_ERROR:
+      return {
+        ...initialState,
+        error: action.error,
       };
     default:
       return state;
