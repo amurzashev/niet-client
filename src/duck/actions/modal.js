@@ -10,7 +10,7 @@ import {
 export const triggerModal = (category = '') => (
   (dispatch, getState) => {
     const { modal, client, car, phone } = getState();
-    if (!client.iin) {
+    if (!client.name) {
       dispatch({
         type: CLIENT_SET_ERROR,
         error: 'Заполните ИИН',
