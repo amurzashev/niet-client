@@ -19,6 +19,7 @@ export default (state = initialState, action) => {
   switch (action.type) {
     case CLIENT_LOADING_BEGIN:
       return {
+        ...state,
         iin: action.iin,
         name: '',
         loading: true,
