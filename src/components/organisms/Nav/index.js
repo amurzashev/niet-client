@@ -13,6 +13,7 @@ const Wrap = styled.nav`
   top: 0;
   left: 0;
   background: ${props => props.theme.colors.white};
+  z-index: 100;
 `;
 
 
