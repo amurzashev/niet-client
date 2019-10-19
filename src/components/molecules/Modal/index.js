@@ -1,10 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-// import {  } from 'duck/actions/car';
-import { setPhoneError } from 'duck/actions/phone';
-import { setClientError } from 'duck/actions/client';
+import { triggerModal } from 'duck/actions/modal';
 
 const Wrap = styled.section`
   position: fixed;
@@ -21,49 +19,54 @@ const Wrap = styled.section`
 
 const WindowWrap = styled.div`
   background: ${props => props.theme.colors.white};
-  padding: 20px;
+  padding: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
 `;
+
+const Exit = styled.div`
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+`;
+
+const Window = ({ children, bindModal }) => (
+  <WindowWrap>
+    <Exit onClick={bindModal}>X</Exit>
+    {children}
+  </WindowWrap>
+);
+
+
+Window.propTypes = {
+  children: PropTypes.node.isRequired,
+  bindModal: PropTypes.func.isRequired,
+};
+const mapDispatchToProps = {
+  bindModal: triggerModal,
+};
+const ConnectedWindow = connect(null, mapDispatchToProps)(Window);
 
 // loading, additionalCar, additionalDriver
 const renderWindow = {
-  loading: <WindowWrap>loading</WindowWrap>,
-  additionalCar: <WindowWrap>additionalCar</WindowWrap>,
-  additionalDriver: <WindowWrap>additionalDriver</WindowWrap>,
+  loading: <ConnectedWindow>loading</ConnectedWindow>,
+  additionalCar: <ConnectedWindow>additionalCar</ConnectedWindow>,
+  additionalDriver: <ConnectedWindow>additionalDriver</ConnectedWindow>,
 };
 
-const Modal = ({ modal, bindClientError, bindPhoneError, phone, client }) => {
-
-  if (!phone.value) {
-    bindPhoneError('Заполните ИИН');
-    return null;
-  }
-  if (!client.iin) {
-    bindClientError('Заполните телефон');
-    return null;
-  }
-
-  return (
-    <Wrap>
-      {renderWindow[modal.category]}
-    </Wrap>
-  );
-};
+const Modal = ({ modal }) => (
+  <Wrap>
+    {renderWindow[modal.category]}
+  </Wrap>
+);
 
 Modal.propTypes = {
   modal: PropTypes.shape({
     category: PropTypes.oneOf(['loading', 'additionalCar', 'additionalDriver']),
   }).isRequired,
-  bindClientError: PropTypes.func.isRequired,
-  bindPhoneError: PropTypes.func.isRequired,
-  client: PropTypes.shape({ iin: PropTypes.string }).isRequired,
-  phone: PropTypes.shape({ value: PropTypes.string }).isRequired,
 };
 const mapStateToProps = state => state;
-const mapDispatchToProps = {
-  bindClientError: setClientError,
-  bindPhoneError: setPhoneError,
-};
-export default connect(mapStateToProps, mapDispatchToProps)(Modal);
+export default connect(mapStateToProps)(Modal);

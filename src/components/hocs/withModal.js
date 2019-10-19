@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import Modal from '../molecules/Modal';
+import Modal from '../container/Modal';
 
 export default ComposedComponent => {
   const Component = props => {
