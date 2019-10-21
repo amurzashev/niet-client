@@ -5,6 +5,7 @@ import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
 import { nameFormatting } from 'components/molecules/Input/components/Info/utils';
 import Input from 'components/molecules/Input';
+import { removeClient } from 'duck/actions/additional';
 
 const Wrap = styled.div`
   margin: 20px 0;
@@ -32,9 +33,9 @@ const DriverWrap = styled.div`
   }
 `;
 
-const Drivers = ({ additional }) => {
+const Drivers = ({ additional, bindClient }) => {
   const onClick = iin => {
-    console.log(iin);
+    bindClient(iin);
   };
 
   return (
@@ -59,6 +60,10 @@ Drivers.propTypes = {
       }),
     ),
   }).isRequired,
+  bindClient: PropTypes.func.isRequired,
 };
 const mapStateToProps = state => state;
-export default connect(mapStateToProps)(Drivers);
+const mapDispatchToProps = {
+  bindClient: removeClient,
+};
+export default connect(mapStateToProps, mapDispatchToProps)(Drivers);

@@ -1,4 +1,4 @@
-import { MODAL_LOADING_BEGIN, MODAL_LOADING_ERROR } from '../actions/types';
+import { MODAL_LOADING_BEGIN, MODAL_LOADING_ERROR, ADDITIONAL_REMOVE_CLIENT } from '../actions/types';
 
 const intialState = {
   clients: [
@@ -31,7 +31,13 @@ export default (state = intialState, action) => {
         loading: false,
         serverError: true,
         error: '',
-      }
+      };
+    case ADDITIONAL_REMOVE_CLIENT:
+      console.log(state.clients);
+      return {
+        ...state,
+        clients: state.clients.filter(client => client.iin !== action.iin),
+      };
     default:
       return state;
   }

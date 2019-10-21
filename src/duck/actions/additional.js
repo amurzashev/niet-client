@@ -26,14 +26,17 @@ export const loadAdditionalClient = iin => (
   }
 );
 
-export const addClient = iin => (
-  (dispatch, getState) => {
+// export const addClient = iin => (
+//   (dispatch, getState) => {
 
-  }
-);
+//   }
+// );
 
 export const removeClient = iin => (
-  (dispatch, getState) => {
-
+  dispatch => {
+    dispatch({
+      type: ADDITIONAL_REMOVE_CLIENT,
+      iin,
+    });
   }
 );
