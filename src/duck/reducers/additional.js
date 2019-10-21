@@ -1,12 +1,8 @@
-import { MODAL_LOADING_BEGIN, MODAL_LOADING_ERROR, ADDITIONAL_REMOVE_CLIENT } from '../actions/types';
+import { MODAL_LOADING_BEGIN, MODAL_LOADING_ERROR, ADDITIONAL_REMOVE_CLIENT, ADDITIONAL_ADD_CLIENT } from '../actions/types';
 
 const intialState = {
   clients: [
     // { iin: '', privilege: false }
-    // dummy data:
-    { iin: '940101300056', privilege: false, name: 'ДОСТОЕВКИЙ БОБУР АЙДАРУЛЫ 7 класс,' },
-    { iin: '940101300050', privilege: false, name: 'СУЛЕЙМЕНОВ АРМАН АЙДАРУЛЫ 7 класс,' },
-    { iin: '940101300010', privilege: false, name: 'КРУТОЙ ДЭНЧИК АЙДАРУЛЫ 7 класс,' },
   ],
   cars: [
     // 'license plate num'
@@ -31,6 +27,14 @@ export default (state = intialState, action) => {
         loading: false,
         serverError: true,
         error: '',
+      };
+    case ADDITIONAL_ADD_CLIENT:
+      return {
+        ...state,
+        loading: false,
+        serverError: false,
+        error: '',
+        clients: [...state.clients, { name: action.name, iin: action.iin }],
       };
     case ADDITIONAL_REMOVE_CLIENT:
       return {
