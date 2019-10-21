@@ -1,4 +1,9 @@
-import { MODAL_LOADING_BEGIN, MODAL_LOADING_ERROR, ADDITIONAL_REMOVE_CLIENT, ADDITIONAL_ADD_CLIENT } from '../actions/types';
+import {
+  MODAL_LOADING_BEGIN,
+  MODAL_LOADING_ERROR,
+  ADDITIONAL_REMOVE_CLIENT,
+  ADDITIONAL_ADD_CLIENT,
+} from '../actions/types';
 
 const intialState = {
   clients: [
