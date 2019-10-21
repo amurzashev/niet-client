@@ -7,4 +7,5 @@ export default styled.form`
   ${props => props.theme.breakpoints.mobile} {
     width: 100%;
   }
+  margin: auto;
 `;

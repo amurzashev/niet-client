@@ -43,7 +43,7 @@ const ChildWrap = styled.label`
     border-left: 2px solid;
     border-bottom: 2px solid;
     transform: rotate(-45deg);
-}
+  }
 `;
 
 const Checkbox = ({ children, tick, toggleTick }) => (
