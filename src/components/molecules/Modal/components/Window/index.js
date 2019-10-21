@@ -11,6 +11,10 @@ const WindowWrap = styled.div`
   justify-content: center;
   align-items: center;
   position: relative;
+  ${props => props.theme.breakpoints.mobile} {
+    width: 100%;
+    margin: 0 20px;
+  }
 `;
 
 const Exit = styled.div`

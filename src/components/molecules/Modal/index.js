@@ -3,6 +3,8 @@ import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Window from './components/Window';
+import Car from './containers/Car';
+import Driver from './containers/Driver';
 
 const Wrap = styled.section`
   position: fixed;
@@ -15,18 +17,24 @@ const Wrap = styled.section`
   justify-content: center;
   align-items: center;
   z-index: 100;
+  ${props => props.theme.breakpoints.mobile} {
+    align-items: flex-start;
+    padding-top: 120px;
+  }
 `;
 
 // loading, additionalCar, additionalDriver
 const renderWindow = {
-  loading: <Window>loading</Window>,
-  additionalCar: <Window>additionalCar</Window>,
-  additionalDriver: <Window>additionalDriver</Window>,
+  loading: 'loading',
+  additionalCar: <Car />,
+  additionalDriver: <Driver />,
 };
 
 const Modal = ({ modal }) => (
   <Wrap>
-    {renderWindow[modal.category]}
+    <Window>
+      {renderWindow[modal.category]}
+    </Window>
   </Wrap>
 );
 
