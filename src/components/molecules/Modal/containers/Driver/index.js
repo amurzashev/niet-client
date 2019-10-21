@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from '@emotion/styled';
 import Input from 'components/molecules/Input';
 import Drivers from './components/Drivers';
@@ -22,9 +22,16 @@ const buttonStaticProps = {
 };
 
 export default () => {
+  const onChange = e => {
+    const iin = e.target.value.match(/\d+/g);
+    if (iin) {
+      console.log(iin[0]);
+    }
+  };
+
   return (
     <Wrap>
-      <Input {...inputStaticProps} />
+      <Input {...inputStaticProps} onChange={onChange} />
       <Drivers />
       <Input {...buttonStaticProps} />
     </Wrap>
