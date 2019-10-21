@@ -33,7 +33,6 @@ export default (state = intialState, action) => {
         error: '',
       };
     case ADDITIONAL_REMOVE_CLIENT:
-      console.log(state.clients);
       return {
         ...state,
         clients: state.clients.filter(client => client.iin !== action.iin),
