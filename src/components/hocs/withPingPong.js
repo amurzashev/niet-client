@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react';
+import ping from 'duck/actions/ping';
 
 export default ComposedComponent => props => {
   useEffect(() => {
-    console.log('ping pong');
+    ping();
     setInterval(() => {
-      console.log('ping-pong');
+      ping();
     }, 30000);
   }, []);
   return (
