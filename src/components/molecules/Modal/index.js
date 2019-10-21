@@ -18,8 +18,10 @@ const Wrap = styled.section`
   align-items: center;
   z-index: 100;
   ${props => props.theme.breakpoints.mobile} {
+    overflow: scroll;
     align-items: flex-start;
     padding-top: 120px;
+    padding-bottom: 20px;
   }
 `;
 

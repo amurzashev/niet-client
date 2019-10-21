@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from '@emotion/styled';
 import Input from 'components/molecules/Input';
+import Drivers from './components/Drivers';
 
 const Wrap = styled.div`
   width: 600px;
@@ -24,6 +25,7 @@ export default () => {
   return (
     <Wrap>
       <Input {...inputStaticProps} />
+      <Drivers />
       <Input {...buttonStaticProps} />
     </Wrap>
   );
