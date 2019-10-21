@@ -3,6 +3,7 @@ import {
   ADDITIONAL_ADD_CLIENT,
   ADDITIONAL_REMOVE_CLIENT,
   MODAL_LOADING_BEGIN,
+  MODAL_LOADING_ERROR,
 } from './types';
 
 export const loadAdditionalClient = iin => (
@@ -14,7 +15,11 @@ export const loadAdditionalClient = iin => (
       });
       apiRequest.post('additional_client', { iin: client.iin, additional: iin })
         .then(resp => console.log(resp))
-        .catch(err => console.log(err.response));
+        .catch(() => {
+          dispatch({
+            type: MODAL_LOADING_ERROR,
+          });
+        });
     } else {
       // show error, not allowed
     }

@@ -33,12 +33,16 @@ const DriverWrap = styled.div`
 `;
 
 const Drivers = ({ additional }) => {
+  const onClick = iin => {
+    console.log(iin);
+  };
+
   return (
     <Wrap>
       {additional.clients.map(client => (
         <DriverWrap key={client.iin}>
           <Caption size="s">{nameFormatting(client.name)}</Caption>
-          <Input type="button" width="50%" value="Удалить водителя" />
+          <Input type="button" width="50%" value="Удалить водителя" onClick={() => onClick(client.iin)} />
         </DriverWrap>
       ))}
     </Wrap>

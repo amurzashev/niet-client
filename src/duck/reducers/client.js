@@ -7,7 +7,8 @@ import {
 } from '../actions/types';
 
 const initialState = {
-  iin: '',
+  // dummy data:
+  iin: '950502300056',
   name: '',
   loading: false,
   error: '',

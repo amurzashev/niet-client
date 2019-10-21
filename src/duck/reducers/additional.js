@@ -1,3 +1,5 @@
+import { MODAL_LOADING_BEGIN, MODAL_LOADING_ERROR } from '../actions/types';
+
 const intialState = {
   clients: [
     // { iin: '', privilege: false }
@@ -16,6 +18,20 @@ const intialState = {
 
 export default (state = intialState, action) => {
   switch (action.type) {
+    case MODAL_LOADING_BEGIN:
+      return {
+        ...state,
+        loading: true,
+        serverError: false,
+        error: '',
+      };
+    case MODAL_LOADING_ERROR:
+      return {
+        ...state,
+        loading: false,
+        serverError: true,
+        error: '',
+      }
     default:
       return state;
   }

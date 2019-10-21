@@ -21,7 +21,7 @@ const Wrap = styled.section`
     overflow: scroll;
     align-items: flex-start;
     padding-top: 120px;
-    padding-bottom: 20px;
+    padding-bottom: 40px;
   }
 `;
 

@@ -24,7 +24,16 @@ const Exit = styled.div`
   cursor: pointer;
 `;
 
-const Window = ({ children, bindModal }) => {
+const Overlay = styled.div`
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: rgba(0,0,0,0.6);
+`;
+
+const Window = ({ children, bindModal, additional }) => {
   const keyDownPress = useCallback(e => {
     if (e.key === 'Escape') {
       bindModal();
@@ -38,6 +47,7 @@ const Window = ({ children, bindModal }) => {
   }, [keyDownPress]);
   return (
     <WindowWrap>
+      { additional.loading && <Overlay /> }
       <Exit onClick={bindModal}>X</Exit>
       {children}
     </WindowWrap>
@@ -48,8 +58,12 @@ const Window = ({ children, bindModal }) => {
 Window.propTypes = {
   children: PropTypes.node.isRequired,
   bindModal: PropTypes.func.isRequired,
+  additional: PropTypes.shape({
+    loading: PropTypes.bool,
+  }).isRequired,
 };
+const mapStateToProps = state => state;
 const mapDispatchToProps = {
   bindModal: triggerModal,
 };
-export default connect(null, mapDispatchToProps)(Window);
+export default connect(mapStateToProps, mapDispatchToProps)(Window);
