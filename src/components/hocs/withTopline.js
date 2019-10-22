@@ -15,18 +15,20 @@ const Topline = styled.div`
   background: ${props => props.theme.colors.error};
   padding: 0 20px;
   display: flex;
-  justify-content: center;
+  align-items: center;
+  color: ${props => props.theme.colors.white};
 `;
 
 export default ComposedComponent => {
   const Component = props => {
+    const { topline, bindTopline } = props;
     useEffect(() => {
-      const { bindTopline } = props;
-      setTimeout(() => {
-        bindTopline('');
-      }, 1500);
-    }, []);
-    const { topline } = props;
+      if (topline.message) {
+        setTimeout(() => {
+          bindTopline('');
+        }, 3000);
+      }
+    }, [topline.message]);
     return (
       <>
         {topline.message && <Topline><Caption size="m">{topline.message}</Caption></Topline>}

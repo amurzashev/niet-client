@@ -4,12 +4,13 @@ import {
   ADDITIONAL_REMOVE_CLIENT,
   MODAL_LOADING_BEGIN,
   MODAL_LOADING_ERROR,
+  // TOPLINE_SET_MESSAGE,
 } from './types';
 
 export const loadAdditionalClient = iin => (
   (dispatch, getState) => {
-    const { client, additional } = getState();
-    if ((iin !== client.iin) || additional.clients.length > 0) {
+    const { client } = getState();
+    if (iin !== client.iin) {
       dispatch({
         type: MODAL_LOADING_BEGIN,
       });
@@ -27,7 +28,7 @@ export const loadAdditionalClient = iin => (
           });
         });
     } else {
-      // show error, not allowed
+      // show error
     }
   }
 );
