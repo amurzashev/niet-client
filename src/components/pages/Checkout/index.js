@@ -28,9 +28,6 @@ const Checkout = props => {
       setVisible(true);
     }
   }, []);
-  const onSubmit = e => {
-    e.preventDefault();
-  };
 
   if (!visible) {
     return null;
@@ -38,7 +35,7 @@ const Checkout = props => {
 
   return (
     <Standard preset="home">
-      <CheckoutForm onSubmit={onSubmit} method="post" action="https://infinite.kz/niet_ogpo">
+      <CheckoutForm method="post" action="https://infinite.kz/niet_ogpo">
         <Caption size="l">Имя</Caption>
         <Input type="plain" defaultValue={client.name} width="100%" readOnly />
         <Caption size="l">ИИН</Caption>
