@@ -4,6 +4,7 @@ import modal from './modal';
 import phone from './phone';
 import car from './car';
 import additional from './additional';
+import topline from './topline';
 
 export default combineReducers({
   client,
@@ -11,4 +12,5 @@ export default combineReducers({
   phone,
   car,
   additional,
+  topline,
 });

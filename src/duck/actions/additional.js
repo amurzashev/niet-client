@@ -8,8 +8,8 @@ import {
 
 export const loadAdditionalClient = iin => (
   (dispatch, getState) => {
-    const { client } = getState();
-    if (iin !== client.iin) {
+    const { client, additional } = getState();
+    if ((iin !== client.iin) || additional.clients.length > 0) {
       dispatch({
         type: MODAL_LOADING_BEGIN,
       });
