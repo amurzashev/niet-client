@@ -4,7 +4,7 @@ import {
   ADDITIONAL_REMOVE_CLIENT,
   MODAL_LOADING_BEGIN,
   MODAL_LOADING_ERROR,
-  // TOPLINE_SET_MESSAGE,
+  TOPLINE_SET_MESSAGE,
 } from './types';
 
 export const loadAdditionalClient = iin => (
@@ -28,7 +28,10 @@ export const loadAdditionalClient = iin => (
           });
         });
     } else {
-      // show error
+      dispatch({
+        type: TOPLINE_SET_MESSAGE,
+        message: 'Этот ИИН уже используется у страхуемого',
+      });
     }
   }
 );
