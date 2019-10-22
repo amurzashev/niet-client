@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Input from 'components/molecules/Input';
 import Caption from 'components/atoms/Caption';
 import { connect } from 'react-redux';
@@ -34,7 +34,9 @@ const Client = ({
   bindClient,
   bindTick,
 }) => {
+  const [val, setVal] = useState('');
   const onChange = e => {
+    setVal(e.target.value);
     if (e.target.value.match(/[0-9]/g)) {
       const clientVal = e.target.value.match(/[0-9]/g).join('');
       if (client.error) {
@@ -52,10 +54,16 @@ const Client = ({
       // document.getElementById('phoneInput').focus();
     }
   };
+  const dynamicProps = {
+    onChange,
+    error: client.error,
+    onFocus,
+    value: val,
+  };
   return (
     <Wrap>
       <InputWrap>
-        <Input {...clientProps} onChange={onChange} error={client.error} onFocus={onFocus} />
+        <Input {...clientProps} {...dynamicProps} />
         <AdditionalEntity modalType="additionalDriver" text="Добавить еще водителей" />
       </InputWrap>
       <Input {...checkProps} tick={client.tick} toggleTick={bindTick}>

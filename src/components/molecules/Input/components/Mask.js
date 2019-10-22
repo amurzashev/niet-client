@@ -28,6 +28,7 @@ const Mask = props => {
     error,
     id,
     width,
+    value,
   };
   const maskProps = {
     id,

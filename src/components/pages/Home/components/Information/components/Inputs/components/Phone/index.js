@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState } from 'react';
 import Input from 'components/molecules/Input';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -12,13 +12,9 @@ const phoneProps = {
 };
 
 const Phone = ({ phone, bindPhoneError, bindPhone }) => {
-  useEffect(() => {
-    if (phone.error) {
-      // const input = document.getElementById('phoneInput');
-      // input.focus();
-    }
-  }, [phone.error]);
+  const [val, setVal] = useState('');
   const onChange = e => {
+    setVal(e.target.value);
     if (e.target.value.match(/[0-9]/g)) {
       const phoneVal = e.target.value.match(/[0-9]/g).join('');
       if (phoneVal.length > 1 && phone.error) {
@@ -42,7 +38,7 @@ const Phone = ({ phone, bindPhoneError, bindPhone }) => {
   };
   return (
     <InputWrap phone>
-      <Input {...phoneProps} onBlur={onBlur} onChange={onChange} error={phone.error} onFocus={onFocus} id="phoneInput" entity="phone" />
+      <Input {...phoneProps} value={val} onBlur={onBlur} onChange={onChange} error={phone.error} onFocus={onFocus} id="phoneInput" entity="phone" />
     </InputWrap>
   );
 };
