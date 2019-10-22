@@ -10,13 +10,17 @@ const getFontSize = size => {
       return 16;
     case 'l':
       return 20;
+    case 'xl':
+      return 24;
     default:
       return 16;
   }
 };
 
 export default styled.p`
+  margin: 0;
   font-family: 'Roboto', sans-serif;
   font-size: ${props => getFontSize(props.size)}px;
   font-weight: ${props => props.bold ? '700' : '400'};
+  color ${props => props.theme.colors[props.color]};
 `;

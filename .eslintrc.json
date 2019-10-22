@@ -26,5 +26,12 @@
     "react/jsx-props-no-spreading": "off",
     "arrow-parens": "off",
     "no-confusing-arrow": "off"
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "paths": ["src"]
+      }
+    }
   }
 }

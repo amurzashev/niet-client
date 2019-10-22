@@ -9,6 +9,11 @@ const Wrap = styled.nav`
   box-sizing: border-box;
   display: flex;
   align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: ${props => props.theme.colors.white};
+  z-index: 100;
 `;
 
 
