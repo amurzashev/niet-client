@@ -18,7 +18,7 @@ const Checkout = props => {
   return (
     <Standard preset="home">
       <Form onSubmit={onSubmit}>
-        <h1>hello</h1>
+        <h1>скиньте 150к на номер +77012831317</h1>
       </Form>
     </Standard>
   );
