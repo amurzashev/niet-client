@@ -15,6 +15,7 @@ const Pricing = ({ bindFinalPrice, pricing }) => {
     <>
       <Caption size="l">Предварительная цена</Caption>
       <Input defaultValue={`${pricing.price} тг`} type="plain" readOnly />
+      <Input type="button" value="Оформить" width="50%" />
     </>
   );
 };

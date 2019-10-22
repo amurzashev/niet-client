@@ -18,6 +18,7 @@ const Checkout = props => {
     car,
     history,
     bindPrePricing,
+    phone,
   } = props;
   useEffect(() => {
     if (!client.name || !car.vin) {
@@ -37,9 +38,13 @@ const Checkout = props => {
 
   return (
     <Standard preset="home">
-      <CheckoutForm onSubmit={onSubmit}>
+      <CheckoutForm onSubmit={onSubmit} method="post" action="https://infinite.kz/niet_ogpo">
         <Caption size="l">Имя</Caption>
         <Input type="plain" defaultValue={client.name} width="100%" readOnly />
+        <Caption size="l">ИИН</Caption>
+        <Input type="plain" defaultValue={client.iin} name="iin" width="100%" readOnly />
+        <Caption size="l">Телефон</Caption>
+        <Input type="plain" defaultValue={phone.value} name="phone" width="100%" readOnly />
         <Caption size="l">Машина</Caption>
         <Input type="plain" defaultValue={`${car.make} ${car.model} ${car.year}`} width="100%" readOnly />
         <Additional />
