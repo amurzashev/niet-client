@@ -4,6 +4,8 @@ import {
   CLIENT_LOADING_ERROR,
   CLIENT_LOADING_DONE,
   CLIENT_SET_TICK,
+  CLIENT_SET_DATA_TICK,
+  CLIENT_SET_RULES_TICK,
 } from '../actions/types';
 
 const initialState = {
@@ -12,6 +14,8 @@ const initialState = {
   loading: false,
   error: '',
   tick: false,
+  rulesTick: false,
+  dataTick: false,
   serverError: false,
 };
 
@@ -48,6 +52,16 @@ export default (state = initialState, action) => {
       return {
         ...state,
         tick: action.tick,
+      };
+    case CLIENT_SET_DATA_TICK:
+      return {
+        ...state,
+        dataTick: action.dataTick,
+      };
+    case CLIENT_SET_RULES_TICK:
+      return {
+        ...state,
+        rulesTick: action.rulesTick,
       };
     default:
       return state;

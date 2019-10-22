@@ -5,6 +5,8 @@ import {
   CLIENT_LOADING_DONE,
   CLIENT_LOADING_ERROR,
   CLIENT_SET_TICK,
+  CLIENT_SET_RULES_TICK,
+  CLIENT_SET_DATA_TICK,
 } from './types';
 
 export const setClient = iinValue => (
@@ -52,6 +54,26 @@ export const setTick = () => (
     dispatch({
       type: CLIENT_SET_TICK,
       tick: !client.tick,
+    });
+  }
+);
+
+export const setRulesTick = () => (
+  (dispatch, getState) => {
+    const { client } = getState();
+    dispatch({
+      type: CLIENT_SET_RULES_TICK,
+      rulesTick: !client.rulesTick,
+    });
+  }
+);
+
+export const setDataTick = () => (
+  (dispatch, getState) => {
+    const { client } = getState();
+    dispatch({
+      type: CLIENT_SET_DATA_TICK,
+      dataTick: !client.dataTick,
     });
   }
 );
