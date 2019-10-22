@@ -1,4 +1,4 @@
-import { PRICING_SET_PREPRICE } from '../actions/types';
+import { PRICING_SET_PREPRICE, PRICING_SET_FINALPRICE_STANDALONE } from '../actions/types';
 
 const initialState = {
   price: '',
@@ -11,6 +11,11 @@ export default (state = initialState, action) => {
       return {
         ...state,
         preprice: action.preprice,
+      };
+    case PRICING_SET_FINALPRICE_STANDALONE:
+      return {
+        ...state,
+        price: action.price,
       };
     default:
       return state;

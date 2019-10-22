@@ -1,5 +1,5 @@
 import { apiRequest } from '.';
-import { MODAL_TRIGGER, PRICING_SET_PREPRICE } from './types';
+import { MODAL_TRIGGER, PRICING_SET_PREPRICE, PRICING_SET_FINALPRICE_STANDALONE } from './types';
 
 export const prePricing = () => (
   (dispatch, getState) => {
@@ -26,6 +26,17 @@ export const prePricing = () => (
   }
 );
 
-export const getFinalPrice = () => {
-
-};
+export const getFinalPrice = () => (
+  (dispatch, getState) => {
+    const { client } = getState();
+    apiRequest.post('final_pricing', client)
+      .then(resp => {
+        dispatch({
+          type: PRICING_SET_FINALPRICE_STANDALONE,
+          price: String(resp.data.cost),
+        });
+        console.log(resp);
+      })
+      .catch(err => console.log(err.response));
+  }
+);
