@@ -2,6 +2,8 @@ import { apiRequest } from '.';
 import {
   ADDITIONAL_ADD_CLIENT,
   ADDITIONAL_REMOVE_CLIENT,
+  ADDITIONAL_ADD_CAR,
+  ADDITIONAL_REMOVE_CAR,
   MODAL_LOADING_BEGIN,
   MODAL_LOADING_ERROR,
   TOPLINE_SET_MESSAGE,
@@ -36,17 +38,54 @@ export const loadAdditionalClient = iin => (
   }
 );
 
-// export const addClient = iin => (
-//   (dispatch, getState) => {
-
-//   }
-// );
-
 export const removeClient = iin => (
   dispatch => {
     dispatch({
       type: ADDITIONAL_REMOVE_CLIENT,
       iin,
+    });
+  }
+);
+
+export const loadAdditionalCar = license => (
+  (dispatch, getState) => {
+    const { car } = getState();
+    if (license !== car.license) {
+      dispatch({
+        type: MODAL_LOADING_BEGIN,
+      });
+      apiRequest.post('car', { license })
+        .then(resp => {
+          if (resp.data.warning || resp.data.error) {
+            dispatch({
+              type: MODAL_LOADING_ERROR,
+            });
+          } else {
+            dispatch({
+              type: ADDITIONAL_ADD_CAR,
+              license: resp.data.data.Vehicle.REG_NUM,
+              make: resp.data.data.Vehicle.MARK,
+              model: resp.data.data.Vehicle.MODEL,
+              certificate: resp.data.data.Vehicle.REG_CERT_NUM,
+              vin: resp.data.data.Vehicle.VIN,
+              year: resp.data.data.Vehicle.NYEAR,
+            });
+          }
+        });
+    } else {
+      dispatch({
+        type: TOPLINE_SET_MESSAGE,
+        message: 'Эта машина уже указана',
+      });
+    }
+  }
+);
+
+export const removeCar = license => (
+  dispatch => {
+    dispatch({
+      type: ADDITIONAL_REMOVE_CAR,
+      license,
     });
   }
 );
