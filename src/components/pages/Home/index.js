@@ -4,6 +4,7 @@ import Form from 'components/molecules/Form';
 import Information from './components/Information';
 
 const Home = () => {
+  // on mount should wipe redux store
   const onSubmit = e => {
     e.preventDefault();
   };
