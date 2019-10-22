@@ -62,7 +62,7 @@ const Car = props => {
   return (
     <InputWrap>
       <Input {...staticProps} {...dynamicProps} />
-      <AdditionalEntity modalType="additionalCar" text="Добавить машину" />
+      <AdditionalEntity modalType="additionalCar" text="Добавить еще машины" />
     </InputWrap>
   );
 };

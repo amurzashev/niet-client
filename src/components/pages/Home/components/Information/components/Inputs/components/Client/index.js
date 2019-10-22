@@ -56,7 +56,7 @@ const Client = ({
     <Wrap>
       <InputWrap>
         <Input {...clientProps} onChange={onChange} error={client.error} onFocus={onFocus} />
-        <AdditionalEntity modalType="additionalDriver" text="Добавить водителя" />
+        <AdditionalEntity modalType="additionalDriver" text="Добавить еще водителей" />
       </InputWrap>
       <Input {...checkProps} tick={client.tick} toggleTick={bindTick}>
         <Caption size="s">Льготы для инвалидов и ветеранов</Caption>
