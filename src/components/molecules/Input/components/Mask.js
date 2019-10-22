@@ -34,7 +34,6 @@ const Mask = props => {
     id,
     mask,
     placeholder,
-    value,
     onChange,
     onFocus,
     onBlur,
@@ -51,7 +50,12 @@ const Mask = props => {
 };
 
 Mask.propTypes = {
-  mask: PropTypes.string.isRequired,
+  mask: PropTypes.arrayOf(
+    PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.instanceOf(RegExp),
+    ]),
+  ).isRequired,
   placeholder: PropTypes.string,
   value: PropTypes.string,
   onChange: PropTypes.func.isRequired,

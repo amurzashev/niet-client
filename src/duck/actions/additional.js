@@ -28,6 +28,10 @@ export const loadAdditionalClient = iin => (
           dispatch({
             type: MODAL_LOADING_ERROR,
           });
+          dispatch({
+            type: TOPLINE_SET_MESSAGE,
+            message: 'Такой пользователь не найден',
+          });
         });
     } else {
       dispatch({
@@ -59,6 +63,10 @@ export const loadAdditionalCar = license => (
           if (resp.data.warning || resp.data.error) {
             dispatch({
               type: MODAL_LOADING_ERROR,
+            });
+            dispatch({
+              type: TOPLINE_SET_MESSAGE,
+              message: 'Машина не найдена',
             });
           } else {
             dispatch({
