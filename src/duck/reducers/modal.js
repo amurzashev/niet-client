@@ -1,8 +1,8 @@
 import { MODAL_TRIGGER } from '../actions/types';
 
 const initialState = {
-  isOpen: true,
-  category: 'additionalCar',
+  isOpen: false,
+  category: '',
 };
 
 export default (state = initialState, action) => {
