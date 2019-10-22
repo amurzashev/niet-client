@@ -52,7 +52,7 @@ export default ComposedComponent => {
       if (topline.message) {
         setTimeout(() => {
           bindTopline('');
-        }, 3000);
+        }, 2900);
       }
     }, [topline.message]);
     return (

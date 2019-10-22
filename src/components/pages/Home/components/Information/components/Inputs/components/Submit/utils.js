@@ -3,5 +3,6 @@ export default props => {
   const isClientLoaded = client.name;
   const isCarLoaded = car.vin;
   const isPhoneLoaded = phone.value && !phone.loading;
-  return isCarLoaded && isClientLoaded && isPhoneLoaded;
+  const areTicksTrue = client.dataTick && client.rulesTick;
+  return isCarLoaded && isClientLoaded && isPhoneLoaded && areTicksTrue;
 };

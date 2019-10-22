@@ -14,7 +14,7 @@ const Submit = props => {
       // proceed to checkout
     } else {
       // show topline error
-      bindTopline('Заполните все поля');
+      bindTopline('Заполните все поля и нужные галочки');
     }
   };
 
