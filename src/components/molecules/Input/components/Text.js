@@ -34,11 +34,9 @@ const Input = styled.input`
   }
 `;
 
-export default props => {
-  return (
-    <Wrap>
-      <Input {...props} />
-      <Info entity={props.entity} />
-    </Wrap>
-  );
-};
+export default props => (
+  <Wrap>
+    <Input {...props} />
+    <Info entity={props.entity} />
+  </Wrap>
+);
