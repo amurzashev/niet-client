@@ -27,16 +27,14 @@ const Wrap = styled.section`
 
 // loading, additionalCar, additionalDriver
 const renderWindow = {
-  loading: 'loading',
-  additionalCar: <Car />,
-  additionalDriver: <Driver />,
+  loading: <Window type="basic">loading</Window>,
+  additionalCar: <Window><Car /></Window>,
+  additionalDriver: <Window><Driver /></Window>,
 };
 
 const Modal = ({ modal }) => (
   <Wrap>
-    <Window>
-      {renderWindow[modal.category]}
-    </Window>
+    {renderWindow[modal.category]}
   </Wrap>
 );
 

@@ -9,8 +9,8 @@ import {
 } from '../actions/types';
 
 const initialState = {
-  iin: '',
-  name: '',
+  iin: '950502300056',
+  name: 'МУРЗАШЕВ АБЫЛАЙ АЙДАРУЛЫ 7 класс',
   loading: false,
   error: '',
   tick: false,

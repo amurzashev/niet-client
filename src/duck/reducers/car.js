@@ -9,12 +9,12 @@ const initialState = {
   loading: false,
   error: '',
   serverError: false,
-  license: '',
-  make: '',
-  model: '',
-  certificate: '',
-  vin: '',
-  year: '',
+  license: '953CDB02',
+  make: 'HYUNDAI',
+  model: 'CRETA',
+  certificate: 'AT00025661',
+  vin: 'Z94G2811DHR033156',
+  year: '2017',
 };
 
 export default (state = initialState, action) => {

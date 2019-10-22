@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { triggerModal } from 'duck/actions/modal';
+import Caption from 'components/atoms/Caption';
 
 const WindowWrap = styled.div`
   background: ${props => props.theme.colors.white};
@@ -33,18 +34,34 @@ const Overlay = styled.div`
   background: rgba(0,0,0,0.6);
 `;
 
-const Window = ({ children, bindModal, additional }) => {
+const Window = ({
+  children,
+  bindModal,
+  additional,
+  type,
+}) => {
   const keyDownPress = useCallback(e => {
     if (e.key === 'Escape') {
       bindModal();
     }
   }, [bindModal]);
   useEffect(() => {
-    window.addEventListener('keydown', keyDownPress);
+    if (!type) {
+      window.addEventListener('keydown', keyDownPress);
+    }
     return () => {
       window.removeEventListener('keydown', keyDownPress);
     };
   }, [keyDownPress]);
+  if (type === 'basic') {
+    return (
+      <WindowWrap>
+        <Caption size="l">
+          {children}
+        </Caption>
+      </WindowWrap>
+    );
+  }
   return (
     <WindowWrap>
       { additional.loading && <Overlay /> }
@@ -61,6 +78,10 @@ Window.propTypes = {
   additional: PropTypes.shape({
     loading: PropTypes.bool,
   }).isRequired,
+  type: PropTypes.string,
+};
+Window.defaultProps = {
+  type: '',
 };
 const mapStateToProps = state => state;
 const mapDispatchToProps = {

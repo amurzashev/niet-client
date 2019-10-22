@@ -5,6 +5,7 @@ import phone from './phone';
 import car from './car';
 import additional from './additional';
 import topline from './topline';
+import pricing from './pricing';
 
 export default combineReducers({
   client,
@@ -13,4 +14,5 @@ export default combineReducers({
   car,
   additional,
   topline,
+  pricing,
 });
