@@ -11,7 +11,7 @@ import InputWrap from '../InputWrap';
 
 const clientProps = {
   type: 'mask',
-  mask: '999999999999',
+  mask: [/\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/],
   maskChar: ' ',
   placeholder: 'ИИН водителя',
   id: 'clientInput',

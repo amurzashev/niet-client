@@ -7,7 +7,7 @@ import InputWrap from '../InputWrap';
 
 const phoneProps = {
   type: 'mask',
-  mask: '+7(999)999-99-99',
+  mask: ['+', '7', '(', /\d/, /\d/, /\d/, ')', /\d/, /\d/, /\d/, '-', /\d/, /\d/, '-', /\d/, /\d/],
   placeholder: 'Номер телефона',
 };
 

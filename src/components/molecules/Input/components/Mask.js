@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import InputMask from 'react-input-mask';
+// import InputMask from 'react-input-mask';
 import PropTypes from 'prop-types';
+import MaskedInput from 'react-text-mask';
 import Text from './Text';
 import Info from './Info';
 
@@ -15,7 +16,7 @@ const Mask = props => {
     placeholder,
     value,
     onChange,
-    autoFocus,
+    // autoFocus,
     error,
     onFocus,
     id,
@@ -23,25 +24,26 @@ const Mask = props => {
     entity,
     width,
   } = props;
-  const maskProps = {
-    mask,
-    value,
-    onChange,
-    onFocus,
-    onBlur,
-  };
   const textProps = {
-    placeholder,
-    autoFocus,
     error,
     id,
     width,
   };
+  const maskProps = {
+    id,
+    mask,
+    placeholder,
+    value,
+    onChange,
+    onFocus,
+    onBlur,
+    render: (ref, inputProps) => (
+      <Text innerRef={ref} {...inputProps} {...textProps} />
+    ),
+  };
   return (
     <Wrap>
-      <InputMask {...maskProps}>
-        {inputProps => <Text {...inputProps} {...textProps} />}
-      </InputMask>
+      <MaskedInput {...maskProps} />
       <Info entity={entity} />
     </Wrap>
   );

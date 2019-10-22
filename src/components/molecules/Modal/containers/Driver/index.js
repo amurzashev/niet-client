@@ -16,7 +16,7 @@ const Wrap = styled.div`
 const inputStaticProps = {
   type: 'mask',
   placeholder: 'ИИН водителя',
-  mask: '999999999999',
+  mask: [/\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/],
   id: 'additional_driver_input',
 };
 
